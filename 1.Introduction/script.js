@@ -5,11 +5,12 @@ console.log(docTitle);
 for (let childNode of document.body.childNodes) {
     console.log(childNode);
 }
+/** returns a random rgb color */
 const randColor = () => {
-    let color = "rgb("
+    let color = "rgb("; 
     for (let i = 0; i < 3; i++) {
-        if (i == 2) color += Math.floor(Math.random() * 255).toString() + ")";
-        else color += Math.floor(Math.random() * 255).toString() + ", ";
+        if (i == 2) color += Math.floor(Math.random() * 256).toString() + ")";
+        else color += Math.floor(Math.random() * 256).toString() + ", ";
     }
     return color;
 }
