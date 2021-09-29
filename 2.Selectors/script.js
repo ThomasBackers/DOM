@@ -8,3 +8,11 @@ for (let img of imgs) {
         img.style.display = "none";
     }
 }
+for (let element of document.querySelectorAll("p")) {
+    console.log(element.innerHTML);
+    if (element.classList.length !== 0) {
+        for (let className of element.classList) {
+            console.log(className);
+        }
+    }
+}
