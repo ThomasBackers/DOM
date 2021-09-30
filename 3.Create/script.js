@@ -11,7 +11,7 @@ const colleagues = [
     "Maxim K.",
     "Michael Tesfay",
     "Philippe Meulemans",
-    "Raoni GIllet",
+    "Raoni Gillet",
     "René",
     "Rouslan Boyko",
     "Stephane Genet",
