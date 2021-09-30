@@ -18,6 +18,18 @@ const colleagues = [
     "Tiffany Dessouroux",
 ];
 
+// Fisher-Yates don't work & I can't find why =D
+const shuffle = (array) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+           const randomIndex = Math.floor(Math.random() * (i + 1));
+           array.push(array[randomIndex]);
+           array.splice(randomIndex, 1);
+       }
+       return array;
+}
+
+const shuffledColleagues = shuffle(colleagues);
+
 /** returns a random rgb color */
 const randColor = () => {
     let color = "rgb(";
@@ -48,7 +60,7 @@ but that one was much more funny and I had to try it, sorry
 
 const article = document.querySelector("article");
 let newSection, newP, textToAppend;
-for (let colleague of colleagues) {
+for (let colleague of shuffledColleagues) {
     const sectionBackgroundColor = randColor();
     const pColor = invertColor(sectionBackgroundColor);
     newSection = document.createElement("section");
