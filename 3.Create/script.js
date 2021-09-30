@@ -33,12 +33,12 @@ const invertColor = color => {
     const splittedColor = color.split(",");
     // returns ['rgb(r', ' g', ' b)']
     // then we replace useless stuff with a void string
-    let r = splittedColor[0].replace("rgb(", "");
-    let g = splittedColor[1].replace(" ", ""); 
-    let b = splittedColor[2].replace(" ", "").replace(")", "");
+    const r = splittedColor[0].replace("rgb(", "");
+    const g = splittedColor[1].replace(" ", ""); 
+    const b = splittedColor[2].replace(" ", "").replace(")", "");
     // we also put them into an array to loop over it easily
     const rgb = [parseInt(r), parseInt(g), parseInt(b)];
-    for (var i = 0; i < rgb.length; i++) rgb[i] = (i === 3 ? 1 : 255) - rgb[i];
+    for (let i = 0; i < rgb.length; i++) rgb[i] = (i === 3 ? 1 : 255) - rgb[i];
     return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
 }
 /*
@@ -56,6 +56,7 @@ for (let colleague of colleagues) {
     textToAppend = document.createTextNode(colleague);
     newP.appendChild(textToAppend);
     newP.style.color = pColor;
+    newP.style.fontWeight = "bold";
     newSection.appendChild(newP);
     newSection.style.backgroundColor = sectionBackgroundColor;
     article.appendChild(newSection);
