@@ -7,12 +7,33 @@ function getElapsedTime() {
     return Number((Date.now() - _initTime) / 1000).toFixed(2) + "s";
 }
 
+function colorMessage(e) {
+    const color = e.target.classList[1];
+    const messageBox = document.createElement("div");
+    messageBox.style.backgroundColor = "rgb(17, 16, 16)";
+    messageBox.style.display = "flex";
+    messageBox.style.position = "fixed";
+    messageBox.style.right = "0";
+    messageBox.style.top = "0";
+    messageBox.style.width = "10rem";
+    messageBox.style.height = "5rem";
+    const p = document.createElement("p");
+    p.innerHTML = color;
+    p.style.color = "white";
+    p.style.margin = "auto";
+    p.style.fontSize = "1.5rem";
+    p.style.fontWeight = "bold";
+    messageBox.appendChild(p);
+    document.body.appendChild(messageBox);
+}
+
 function clickOnSquare(e) {
     console.log(e.target.classList[1]);
     console.log(getElapsedTime());
     const newSquare = document.createElement("div");
     newSquare.classList.add("displayedsquare");
     newSquare.classList.add(e.target.classList[1]);
+    newSquare.addEventListener("click", colorMessage);
     displayedSquareWrapper.appendChild(newSquare);
 
     const newLi = document.createElement("li");
