@@ -56,6 +56,7 @@ for (let colleague of colleagues) {
     textToAppend = document.createTextNode(colleague);
     newP.appendChild(textToAppend);
     newP.style.color = pColor;
+    // Just because you're important I put your names in bold
     newP.style.fontWeight = "bold";
     newSection.appendChild(newP);
     newSection.style.backgroundColor = sectionBackgroundColor;
