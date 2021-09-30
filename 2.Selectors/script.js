@@ -6,10 +6,6 @@ const imgs = document.querySelectorAll("img");
 for (let img of imgs) if (!img.classList.contains("important")) img.style.display = "none";
 
 for (let element of document.querySelectorAll("p")) {
-    console.log(element.innerHTML);
-    if (element.classList.length !== 0) {
-        for (let className of element.classList) {
-            console.log(className);
-        }
-    }
+    if (element.hasChildNodes) for (let childNode of element.childNodes) console.log(childNode);
+    if (element.classList.length !== 0) console.log(element.getAttribute("class"));
 }
