@@ -10,4 +10,4 @@ const swapNodes = (node1, node2) => {
 
 swapNodes(document.querySelectorAll("h2")[1], document.querySelectorAll("h2")[2]);
 
-document.querySelectorAll("section")[-0].remove();
+document.querySelectorAll("section")[2].remove();
