@@ -38,7 +38,9 @@ newSelect.addEventListener("change", event => {
         for (let element of ul.childNodes)
             if (element.nodeType === 1 && !element.classList.contains("important"))
                 element.style.visibility = "hidden";
-    } else for (let element of ul.childNodes) if (element.nodeType === 1) element.style.visibility = "visible";
+    } else
+        for (let element of ul.childNodes)
+            if (element.nodeType === 1) element.style.visibility = "visible";
 });
 
 // HARD MODE
@@ -47,32 +49,41 @@ for (let element of ul.childNodes) if (element.nodeType === 1) allLi.push(elemen
 
 /**
  * loop over all the list elements while keeping track of all textContent
- * and remove any elements whose textContent you've already seen earlier 
+ * and remove any elements whose textContent you've already seen earlier
  */
 const removeDuplicateLi = () => {
     const seenTextContent = {};
     for (let li of allLi) {
         //here we remove the element if its textContent is already stored
-        if (seenTextContent[li.textContent]) ul.removeChild(li);
+        if (seenTextContent[li.textContent]) {
+            ul.removeChild(li);
+            allLi.splice(allLi.indexOf(li), 1);
+        }
         //else we set an entry [li.textContent] = true in seenTextContent
         else seenTextContent[li.textContent] = true;
     }
-}
+};
+
 removeDuplicateLi();
 
 const shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
-}
+};
 document.body.addEventListener("keyup", event => {
     if (event.key === "r") {
         shuffleArray(allLi);
         ul.innerHTML = "";
         for (let li of allLi) ul.appendChild(li);
         ul.insertBefore(ul.querySelector(".important"), ul.firstChild);
-    };
-})
+    } else if (event.key = "d") {
+        const newFastnFuriousLi = document.querySelector(".important").cloneNode();
+        newFastnFuriousLi.innerHTML = "Fast and Furious";
+        ul.insertBefore(newFastnFuriousLi, ul.firstChild);
+        for (let element of ul.childNodes) if (element.nodeType === 1) allLi.push(element);
+    }
+});
