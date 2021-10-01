@@ -84,6 +84,5 @@ document.body.addEventListener("keyup", event => {
         const newFastnFuriousLi = document.querySelector(".important").cloneNode();
         newFastnFuriousLi.innerHTML = "Fast and Furious";
         ul.insertBefore(newFastnFuriousLi, ul.firstChild);
-        for (let element of ul.childNodes) if (element.nodeType === 1) allLi.push(element);
     }
 });
