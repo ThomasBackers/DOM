@@ -10,11 +10,10 @@ for (let childNode of ul.childNodes) {
                     "The most important franchise ever, the story of DOM(inic) Toretto's family. It's not about car, it's about family."
                 );
             });
-        } else {
+        } else
             childNode.addEventListener("click", () => {
                 alert(childNode.innerHTML);
             });
-        }
     }
 }
 
@@ -24,8 +23,20 @@ document.body.insertBefore(newDiv, ul);
 newDiv.appendChild(newSelect);
 for (let i = 0; i < 2; i++) {
     const newOption = document.createElement("option");
-    if (i === 0) newOption.setAttribute("value", "important franchises");
-    else newOption.setAttribute("value", "normal franchises");
+    if (i === 0) {
+        newOption.setAttribute("value", "normal franchises");
+        newOption.innerHTML = "normal franchises";
+    } else {
+        newOption.setAttribute("value", "important franchises");
+        newOption.innerHTML = "important franchises";
+    }
     newSelect.appendChild(newOption);
 }
-console.log(newSelect.childNodes);
+
+newSelect.addEventListener("change", event => {
+    if (event.target.value === "important franchises") {
+        for (let li of ul.childNodes)
+            if (li.nodeType === 1 && !li.classList.contains("important"))
+                li.style.visibility = "hidden";
+    } else for (let li of ul.childNodes) if (li.nodeType === 1) li.style.visibility = "visible";
+});
