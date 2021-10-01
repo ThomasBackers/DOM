@@ -1,5 +1,4 @@
 const ul = document.querySelector("ul");
-console.log(ul.childNodes);
 
 for (let childNode of ul.childNodes) {
     if (childNode.nodeType === 1) {
@@ -18,3 +17,15 @@ for (let childNode of ul.childNodes) {
         }
     }
 }
+
+const newDiv = document.createElement("div");
+const newSelect = document.createElement("select");
+document.body.insertBefore(newDiv, ul);
+newDiv.appendChild(newSelect);
+for (let i = 0; i < 2; i++) {
+    const newOption = document.createElement("option");
+    if (i === 0) newOption.setAttribute("value", "important franchises");
+    else newOption.setAttribute("value", "normal franchises");
+    newSelect.appendChild(newOption);
+}
+console.log(newSelect.childNodes);
