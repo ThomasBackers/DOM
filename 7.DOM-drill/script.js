@@ -35,8 +35,27 @@ for (let i = 0; i < 2; i++) {
 
 newSelect.addEventListener("change", event => {
     if (event.target.value === "important franchises") {
-        for (let li of ul.childNodes)
-            if (li.nodeType === 1 && !li.classList.contains("important"))
-                li.style.visibility = "hidden";
-    } else for (let li of ul.childNodes) if (li.nodeType === 1) li.style.visibility = "visible";
+        for (let element of ul.childNodes)
+            if (element.nodeType === 1 && !element.classList.contains("important"))
+                element.style.visibility = "hidden";
+    } else for (let element of ul.childNodes) if (element.nodeType === 1) element.style.visibility = "visible";
 });
+
+// HARD MODE
+const allLi = [];
+for (let element of ul.childNodes) if (element.nodeType === 1) allLi.push(element);
+
+/**
+ * loop over all the list elements while keeping track of all textContent
+ * and remove any elements whose textContent you've already seen earlier 
+ */
+const removeDuplicateLi = () => {
+    const seenTextContent = {};
+    for (let li of allLi) {
+        //here we remove the element if its textContent is already stored
+        if (seenTextContent[li.textContent]) ul.removeChild(li);
+        //else we set an entry [li.textContent] = true in seenTextContent
+        else seenTextContent[li.textContent] = true;
+    }
+}
+removeDuplicateLi();
