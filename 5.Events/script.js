@@ -43,6 +43,7 @@ function clickOnSquare(e) {
 
 // key mapping is valid for Belgian keyboard; so BEWARE if you're using US qwerty or some other ;)
 function keypress(e) {
+    //keyCode & keypress are deprecated, I have to learn more about it 
     switch (e.keyCode) {
         case 32:
             console.log(e.keyCode);
